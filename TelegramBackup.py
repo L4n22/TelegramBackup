@@ -40,8 +40,7 @@ class TelegramBackup:
         return await self.client.get_messages(
             self.src_entity,
             reverse=True,
-            limit=None
-        )
+            limit=None)
     
 
     async def __filter_messages(self):
