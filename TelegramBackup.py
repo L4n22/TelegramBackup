@@ -78,10 +78,9 @@ async def main():
         api_id=0,
         api_hash="")
     
+    SRC_ENTITY = "https://t.me/+T3EXAMPLE1"
+    DST_ENTITY = "https://t.me/+T3EXAMPLE2"
     async with telebackup:
-        SRC_ENTITY = "https://t.me/+T3EXAMPLE1"
-        DST_ENTITY = "https://t.me/+T3EXAMPLE2"
-
         await telebackup.set_src_entity(SRC_ENTITY)
         await telebackup.set_dst_entity(DST_ENTITY)
         await telebackup.send_messages()
