@@ -36,16 +36,17 @@ class TelegramBackup:
         self.dst_entity = await self.client.get_input_entity(entity)
   
 
-    async def __get_src_entity_messages(self):
-        return await self.client.get_messages(
+    def __get_src_entity_messages(self):
+        return self.client.iter_messages(
             self.src_entity,
             reverse=True,
-            limit=None)
+            limit=None,
+            offset_date=None)
     
 
     async def __filter_messages(self):
-        messages = await self.__get_src_entity_messages()
-        for message in messages:
+        messages = self.__get_src_entity_messages()
+        async for message in messages:
             if isinstance(message, types.Message) \
                 and isinstance(message.media,
                     (types.MessageMediaPhoto,
